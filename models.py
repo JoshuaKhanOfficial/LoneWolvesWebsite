@@ -31,7 +31,7 @@ class User(db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)  
 
-class RecipeCard(db.Model):
+class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=True, nullable=False)
     readyInMins = db.Column(db.Integer, unique=True, nullable=False)
