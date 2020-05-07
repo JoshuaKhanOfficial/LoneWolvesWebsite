@@ -30,3 +30,17 @@ class User(db.Model):
     #To String method
     def __repr__(self):
         return '<User {}>'.format(self.username)  
+
+class RecipeCard(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), unique=True, nullable=False)
+    readyInMins = db.Column(db.Integer, unique=True, nullable=False)
+    imageURL = db.Column(db.String(200), unique=True, nullable=False)
+
+    def toDict(self):
+        return{
+            "id": self.id,
+            "title": self.title,
+            "mins": self.readyInMins,
+            "image": self.imageURL
+        }
