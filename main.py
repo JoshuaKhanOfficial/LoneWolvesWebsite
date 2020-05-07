@@ -63,3 +63,5 @@ def signup():
     db.session.rollback()
     return 'username or email already exists'
   return 'user created', 201
+
+app.run(host='0.0.0.0', port=8080)
