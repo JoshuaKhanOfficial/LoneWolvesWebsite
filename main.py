@@ -4,7 +4,7 @@ from flask_jwt import JWT, jwt_required, current_identity
 from sqlalchemy.exc import IntegrityError
 from datetime import timedelta 
 
-from models import db, User, Todo
+from models import db, User
 
 ''' Begin boilerplate code '''
 
@@ -36,7 +36,7 @@ db.create_all(app=app)
 url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/"
 headers = {
   'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-  'x-rapidapi-key': "<YOUR_RAPID_API_KEY>",
+  'x-rapidapi-key': "19dc224ba2msh7d80219bccbe7afp18e387jsn0206cff2ce52",
   }
 random_joke = "food/jokes/random"
 find = "recipes/findByIngredients"
