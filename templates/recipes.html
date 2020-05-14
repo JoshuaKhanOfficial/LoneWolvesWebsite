@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Food Findr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+ <style>
+   li.hover{
+     color:crimson;
+     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.1);
+   }
+  
+ 
+ </style>
+  <body style="background-color:blanchedalmond">
+    <nav>
+        <div class="nav-wrapper red" style="padding-left: 10px;">
+           <a href="index.html" class="brand-logo">FoodFindr <i class="material-icons">restaurant_menu</i> </a>
+           
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <!--Add in hyperlinks-->
+                <li><a href="#"><i class="material-icons">account_circle</i></a> </li>
+                <li><a href="#"><i class="material-icons">whatshot</i></a> </li>
+                <li><a href="#"><i class="material-icons">settings</i></a> </li>
+                <li><a href="#">Log Out</a>  </li>
+                </ul>
+        </div>
+    </nav>
+    
+    <main>
+      <!-- Section: Recipe Boxes -->
+      <section id="popular" class="section section-popular scrollspy">
+         <div class="container">
+           <div class="row">
+             <h4 class="center">
+               <span class="red-text">Recipe</span>
+               <span class="teal-text">Names</span></h4>
+            <div class="col s12 m4">
+             <div class= "card">
+              <div class="card-image">
+              <img src="/static/HomeFood/chikun.jpg" style="width:100%; height:auto; border:0;">
+              <span class="card-title" > Curry Chikun</span>
+              </div> 
+              <div class="card-content">
+               Curry
+              </div>
+             </div>
+            </div>
+
+          <div class="col s12 m4">
+            <div class= "card">
+              <div class="card-image">
+              <img src="/static/HomeFood/chikun.jpg" style="width:100%; height:auto; border:0;">
+              <span class="card-title" > Curry Chikun</span>
+              </div> 
+              <div class="card-content">
+              Curry
+              </div>
+            </div>
+          </div>
+
+          <div class="col s12 m4">
+             <div class= "card">
+              <div class="card-image">
+              <img src="/static/HomeFood/chikun.jpg" style="width:100%; height:auto; border:0;">
+              <span class="card-title" > Curry Chikun</span>
+              </div> 
+              <div class="card-content">
+               Curry
+              </div>
+             </div>
+          </section>
+		<table>
+			<tr>
+	<td>
+            <div class="container" style="margin: 0px; align-items: margin-left">
+                <a class='dropdown-trigger btn waves-light waves-default red darken-1' data-target='listing' onclick="getListing()">Show More Recipes</a>
+            </div> 
+              <div id="listing" class="collection">
+              </div>
+				</td>
+				<td>
+        	<div id="result" class="col s12 m2" style="text-align: center; align-items: center; width: 165px;">
+					</div>
+				</td>
+			</tr>
+		</table>
+    
+    </main>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"> </script>
+   
+   
+<script>
+        function getListing(){ 
+          getData("https://api.spoonacular.com/recipes/findByIngredients?apiKey=3a4f16243c974f17874c85eb65324e67&&ingredients=pork,+lemon,+honey");
+        }
+
+        function displayListing(recipes){
+           //Renders a list of pokemon links to the page  
+           let results = document.querySelector('#listing');
+          for(let recipe of recipes){
+            results.innerHTML += `  
+            <div class="col s12 m4">
+             <div class= "card">
+              <div class="card-image">
+              <img src="${recipe.image}" style="width:100%; height:auto; border:0;">
+              <span class="card-title" > ${recipe.title}</span>
+              </div> 
+             </div>
+            </div>
+            `;
+          }
+        }
+
+        function displayRecipe(recipe){
+          //renders details of the specified pokemon onto the page
+		    let results = document.querySelector('#result');
+		  
+		    results.innerHTML = 
+			  `
+        <p class="z-depth-2" style="overflow: visible; color: blue">
+			  	<img src="${recipe.image}" style="background-color:teal;"><br/>
+			  	${recipe.title}, #${recipe.id}<br/>
+
+        </p>
+			  `;
+            
+        }
+
+       async function getData(url){
+        try{
+              let response = await fetch(url);
+              let result = await response.json();
+              displayListing(result);
+          }catch(e){
+              console.log(e);//catch and log any errors
+          }
+       }
+/*
+       async function getPokemonData(url){
+         try{
+              let response = await fetch(url);
+              let result = await response.json();
+              displayPokemon(result);
+         }catch(e){
+              console.log(e);
+         }
+       }
+       */
+    </script>
+        
+  </body>
+</html>
+              

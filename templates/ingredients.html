@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %} Recipes{% endblock %}
+{% block page %} {{ current_user.username }}'s Recipes{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+ {% if current_user.is_authenticated %}
+  <div class="container">
+    <div class="row">
+      <table>
+        <tbody>
+           {% for ingredient in ingredients %}
+            <tr>
+              <td>{{ingredient.name}}</td>
+              <td>
+                {{ingredient.amount}}
+              </td>
+              <td>
+                <p>
+                  <label>
+                    <input id="toggle" type="checkbox" class="filled-in" checked="{{ingredient.checked}}" />
+                  </label>
+                </p>
+              </td>
+            </tr>
+          {% endfor %}
+        <tbody>
+      </table>
+    </div>
+<!--
+    <div class="row">
+      <form class="col s12 m8 offset-m2 card-panel" method="POST" action="/ingredients">
+          
+            {{ form.csrf_token }}
+
+            <div class="input-field col s12 m8 offset-m2"> 
+              {{ form.name(size=200, class="validate materialize-textarea") }}
+              {{ form.name.label }}
+            </div>
+            <div class="input-field col s12 m8 offset-m2"> 
+              {{ form.amount(class="validate materialize-textarea") }}
+              {{ form.amount.label }}
+            </div>
+
+            <div class="input-field col s12 m8 offset-m2">
+              {{form.submit}}
+            </div> 
+        </form>
+    </div>
+-->
+ 
+
+  {% endif %} 
+{% endblock %}

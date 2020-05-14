@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Edit{% endblock %}
+{% block page %}Edit{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+      <form class="col s12 m8 offset-m2" method="POST" action="\editTodo\{{id}}">
+    <div class="input-field col s12 m8 offset-m2"> 
+      <textarea class="validate materialize-textarea" id="text" name="text" required="" size="200" style="height: 43px;"></textarea>
+      <label for="text">Text</label>
+    </div>
+    <div class="input-field col s12 m8 offset-m2">
+      <i class="btn waves-effect waves-light white-text waves-input-wrapper" style=""><input class="waves-button-input" id="submit" name="submit" type="submit" value="Update"></i>
+    </div>
+  </form>
+  </div>
+
+</div>
+
+{% endblock %}
