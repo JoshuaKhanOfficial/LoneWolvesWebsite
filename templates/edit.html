@@ -7,11 +7,17 @@
 {% block content %}
 <div class="container">
   <div class="row">
-      <form class="col s12 m8 offset-m2" method="POST" action="\editTodo\{{id}}">
+      <form class="col s12 m8 offset-m2" method="POST" action="\editIngredient\{{id}}">
     <div class="input-field col s12 m8 offset-m2"> 
-      <textarea class="validate materialize-textarea" id="text" name="text" required="" size="200" style="height: 43px;"></textarea>
-      <label for="text">Text</label>
+      <textarea class="validate materialize-textarea" id="name" name="name" required="" size="200" style="height: 43px;"></textarea>
+      <label for="name">Ingredient Name</label>
     </div>
+    
+    <div class="input-field col s12 m8 offset-m2"> 
+      <textarea class="validate materialize-textarea" id="amount" name="amount"  style="height: 43px;"></textarea>
+      <label for="amount">Amount</label>
+    </div>
+
     <div class="input-field col s12 m8 offset-m2">
       <i class="btn waves-effect waves-light white-text waves-input-wrapper" style=""><input class="waves-button-input" id="submit" name="submit" type="submit" value="Update"></i>
     </div>

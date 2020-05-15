@@ -216,6 +216,10 @@
    
    
 <script>
+        let apiURL = "https://api.spoonacular.com/";
+        let findByIng = "recipes/findByIngredients";
+        let apiKey = "?apiKey=3a4f16243c974f17874c85eb65324e67&&";
+        
         function getListing(){ 
           getData("https://api.spoonacular.com/recipes/findByIngredients?apiKey=3a4f16243c974f17874c85eb65324e67&&ingredients=pork,+lemon,+honey");
         }

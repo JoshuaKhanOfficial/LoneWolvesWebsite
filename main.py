@@ -118,10 +118,59 @@ def myList():
 
   return render_template('ingredients.html', form=form, ingredients=ingredientsList)
 
+@app.route('/ingredient/<id>', methods=['POST'])
+@login_required
+def delete_ingredient(id):
+  remove = Ingredient.query.filter_by(user_id=current_user.id, id=id).first() # retrieve ingredient to remove
+  if remove == None:
+    return 'Invalid id or unauthorized'
+  db.session.delete(remove) # delete the ingredient
+  db.session.commit()
+  flash('Ingredient Deleted!')
+  return redirect(url_for('myList'))
+
+@app.route('/editIngredient/<id>', methods=['GET','POST'])
+@login_required
+def edit_ingredient(id):
+  data = request.form
+  if data:
+    ingredient = Ingredient.query.filter_by(user_id=current_user.id, id=id).first()
+    ingredient.name = data['name']
+    ingredient.amount = data['amount']
+    db.session.add(ingredient)
+    db.session.commit()
+    flash('Ingredient Updated!')
+    return redirect(url_for('myList'))
+  return render_template('edit.html', id=id)
+
+
+@app.route('/recipes/search', methods=['GET', 'POST'])
+@login_required
+def myRecipes():
+  return render_template('recipes.html')
+
+'''
+@app.route('/recipes/addIngredients', methods=['GET', 'POST'])
+@login_required
+def myRecipes():
+  return render_template('recipes.html')
+
+@app.route('/recipes/<id>', methods=['GET', 'POST'])
+@login_required
+def myRecipes():
+  return render_template('recipes.html')
+
 @app.route('/recipes', methods=['GET', 'POST'])
 @login_required
 def myRecipes():
   return render_template('recipes.html')
 
+
+@app.route('/recipes', methods=['GET', 'POST'])
+@login_required
+def myRecipes():
+  return render_template('recipes.html')
+
+'''
 
 app.run(host='0.0.0.0', port=8080, debug=True)

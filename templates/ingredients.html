@@ -11,7 +11,7 @@
       <table>
         <thead>
           <tr>
-            <td>Ingredient</td><td>Amount</td><td>Bought</td>
+            <td>Ingredient</td><td>Amount</td><td>Bought</td><td></td>
           </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@
             <tr>
               <td>{{ ingredient.name }}</td>
               <td>
-                {{ingredient.amount}}
+                {{ ingredient.amount }}
               </td>
               <td>
                 <form>
@@ -37,6 +37,16 @@
                     </label>
                   </p>
                 </form>
+              </td>
+              <td>
+                <!--<a class="waves-effect red waves-orange btn" href="/ingredient/{{ingredient.id}}"> Delete</a>
+                -->
+                <form action="/ingredient/{{ingredient.id}}" method="POST">
+                    <input class="waves-effect red waves-orange btn" type="submit" value="Delete">
+                </form>
+        
+                <a class="waves-effect red waves-orange btn" href="/editIngredient/{{ingredient.id}}">Edit</a>
+                
               </td>
               
             </tr>
@@ -63,6 +73,17 @@
         </form>
     </div>
 
+  <!--
+   <script>
+      async function delete(id){
+  let result = await sendRequest(`${server}/ingredients/${id}`, 'DELETE');
+
+  toast('Deleted!');
+
+  loadView();
+}
+    </script>  
+ -->
  
 
   {% endif %} 
