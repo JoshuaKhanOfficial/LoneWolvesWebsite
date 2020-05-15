@@ -26,28 +26,33 @@
                 <li><a href="#"><i class="material-icons">whatshot</i></a> </li>
                 <li><a href="#"><i class="material-icons">settings</i></a> </li>
                 <li><a href="#">Log Out</a>  </li>
-                </ul>
+              </ul>
         </div>
     </nav>
     
     <main>
       <!-- Section: Recipe Boxes -->
       <section id="popular" class="section section-popular scrollspy">
-         <div class="container">
+        <div class="container">
            <div class="row">
              <h4 class="center">
                <span class="red-text">Recipe</span>
                <span class="teal-text">Names</span></h4>
+
             <div class="col s12 m4">
-             <div class= "card">
-              <div class="card-image">
-              <img src="/static/HCRs/gnocchi.jpg" style="width:100%; height:auto; border:0;">
-              <span class="card-title" ></span>
-              </div> 
-              <div class="card-content">
-               Chorizo & mozzarella gnocchi bake
+              <div class= "card">
+                <div class="card-image">
+                  <img src="/static/HCRs/gnocchi.jpg" style="width:100%; height:auto; border:0;">
+                  <span class="card-title" ></span>
+                </div> 
+                <div class="card-content">
+                  Chorizo & mozzarella gnocchi bake
+                </div>
+                <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+                </div>
               </div>
-             </div>
             </div>
 
           <div class="col s12 m4">
@@ -57,7 +62,11 @@
               <span class="card-title" ></span>
               </div> 
               <div class="card-content">
-              Easy butter chicken
+                Easy butter chicken
+              </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
               </div>
             </div>
           </div>
@@ -70,6 +79,10 @@
               </div> 
               <div class="card-content">
                Easy classic lasagne
+              </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
               </div>
              </div>
            </section>
@@ -86,6 +99,10 @@
               <div class="card-content">
                Thai fried prawn & pineapple rice
               </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+              </div>
              </div>
             </div>
 
@@ -98,6 +115,10 @@
               <div class="card-content">
                Easy chocolate biscuits
               </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+              </div>
              </div>
             </div>
 
@@ -109,6 +130,10 @@
               </div> 
               <div class="card-content">
                Easy pancakes
+              </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
               </div>
              </div>
             </div>
@@ -126,6 +151,10 @@
               <div class="card-content">
                Easy chicken fajitas
               </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+              </div>
              </div>
             </div>
 
@@ -138,6 +167,10 @@
               <div class="card-content">
                Easy treacle sponge
               </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+              </div>
              </div>
             </div>
 
@@ -149,6 +182,10 @@
               </div> 
               <div class="card-content">
                Piri-piri chicken with smashed sweet potatoes & broccoli
+              </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
               </div>
              </div>
             </div>
@@ -166,6 +203,10 @@
               <div class="card-content">
                Easy sweet & sour chicken
               </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+              </div>
              </div>
             </div>
 
@@ -178,6 +219,10 @@
               <div class="card-content">
                Easy beef hotpot
               </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+              </div>
              </div>
             </div>
 
@@ -189,6 +234,10 @@
               </div> 
               <div class="card-content">
                Vegetarian chilli
+              </div>
+              <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
               </div>
              </div>
             </div>
@@ -221,7 +270,7 @@
         let apiKey = "?apiKey=3a4f16243c974f17874c85eb65324e67&&";
         
         function getListing(){ 
-          getData("https://api.spoonacular.com/recipes/findByIngredients?apiKey=3a4f16243c974f17874c85eb65324e67&&ingredients=pork,+lemon,+honey");
+          getData(apiURL+findByIng+apiKey+"ingredients=pork,+lemon,+honey");
         }
 
         function displayListing(recipes){
@@ -230,12 +279,19 @@
           for(let recipe of recipes){
             results.innerHTML += `  
             <div class="col s12 m4">
-             <div class= "card">
-              <div class="card-image">
-              <img src="${recipe.image}" style="width:100%; height:auto; border:0;">
-              <span class="card-title" > ${recipe.title}</span>
-              </div> 
-             </div>
+              <div class= "card">
+                <div class="card-image">
+                  <img src="${recipe.image}" style="width:100%; height:auto; border:0;">
+                  <span class="card-title" ></span>
+                </div> 
+                <div class="card-content">
+                  ${recipe.title}
+                </div>
+                <div class="card-action">
+                  <a href="">View</a>
+                  <a href="">Add to Ingredients</a>
+                </div>
+              </div>
             </div>
             `;
           }

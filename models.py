@@ -43,12 +43,12 @@ class Recipe(db.Model):
 
 
     def toDict(self):
-        return{
-            "id": self.id,
-            "title": self.title,
-            "mins": self.readyInMins,
-            "image": self.imageURL
-        }
+      return{
+          "id": self.id,
+          "title": self.title,
+          "mins": self.readyInMins,
+          "image": self.imageURL
+      }
 
 
 class Ingredient(db.Model):

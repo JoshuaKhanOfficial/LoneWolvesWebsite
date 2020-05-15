@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <style>
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+  </style>
+  <head>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Food Findr{% endblock %}</title>
+  </head>
+
+  <body style="background-color:blanchedalmond">
+    <nav class="red">
+      <div class="navbar-fixed">
+        <nav class="red">
+          <div class="container" style="padding-left: 10px;>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">FoodFindr <i class="material-icons">restaurant_menu</i> </a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#"><i class="material-icons">account_circle</i></a> </li>
+                <li><a href="/recipes" class="tooltip"><i class="material-icons">whatshot</i>
+                <span class="tooltiptext">Recipes</span>
+                </a></li>
+                <li><a href="#"><i class="material-icons">settings</i></a> </li>
+                <li><a href="#">Log Out</a>  </li>
+              </ul>
+              <a href="#" data-target="mobile-nav" class="sidenav-trigger"></a>
+            </div>
+          </div>      
+        </nav>
+      </div>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <nav class="blanchedalmond black-text" style="padding: 10px">
+              <div class="nav-wrapper">
+                  <ul class="flashes">
+                  {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                  </ul>
+              </div>
+            </nav>
+            {% endif %}
+          {% endwith %}
+    </nav>
+
+    <div id="content">{% block content %}{% endblock %}</div>
+
+    <script src="https://code.iconify.design/1/1.0.4/iconify.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

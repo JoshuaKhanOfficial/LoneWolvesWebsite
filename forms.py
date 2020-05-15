@@ -17,18 +17,11 @@ class LogIn(FlaskForm):
   submit = SubmitField('Login', render_kw={'class': 'btn red waves-effect waves-orange white-text'})
 
 
-
 class AddIngredient(FlaskForm):
   name = StringField('Name:', validators=[InputRequired()])
   amount = IntegerField('Amount', validators=None)
   submit = SubmitField('Add', render_kw={'class': 'btn waves-effect waves-light white-text'})
 
-class AddRecipe(FlaskForm):
-  name = StringField('Name:', validators=None)
-  title = StringField('Title:', validators=None)
-  minutes = IntegerField('Minutes:', validators=None)
-  imageURL = StringField('URL:', validators=None)
-  submit = SubmitField('Add to Recipes', render_kw={'class': 'btn red waves-effect waves-orange white-text'})
 
   
   

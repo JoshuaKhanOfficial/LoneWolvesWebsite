@@ -144,9 +144,10 @@ def edit_ingredient(id):
   return render_template('edit.html', id=id)
 
 
-@app.route('/recipes/search', methods=['GET', 'POST'])
+@app.route('/recipes', methods=['GET', 'POST'])
 @login_required
 def myRecipes():
+  
   return render_template('recipes.html')
 
 '''
