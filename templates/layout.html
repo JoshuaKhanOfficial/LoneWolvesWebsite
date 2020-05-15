@@ -13,11 +13,11 @@
     <title>{% block title %}Food Findr{% endblock %}</title>
   </head>
 
-  <body>
+  <body style="background-color:blanchedalmond">
     <nav class="red">
       <div class="navbar-fixed">
         <nav class="red">
-          <div class="container">
+          <div class="container" style="padding-left: 10px;>
             <div class="nav-wrapper">
               <a href="#" class="brand-logo">FoodFindr <i class="material-icons">restaurant_menu</i> </a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -32,7 +32,7 @@
       </div>
           {% with messages = get_flashed_messages() %}
             {% if messages %}
-              <nav class="white black-text" style="padding: 10px">
+              <nav class="blanchedalmond black-text" style="padding: 10px">
               <div class="nav-wrapper">
                   <ul class="flashes">
                   {% for message in messages %}

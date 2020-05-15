@@ -9,29 +9,44 @@
   <div class="container">
     <div class="row">
       <table>
+        <thead>
+          <tr>
+            <td>Ingredient</td><td>Amount</td><td>Bought</td>
+          </tr>
+        </thead>
         <tbody>
-           {% for ingredient in ingredients %}
+          {% for ingredient in ingredients %}
             <tr>
-              <td>{{ingredient.name}}</td>
+              <td>{{ ingredient.name }}</td>
               <td>
                 {{ingredient.amount}}
               </td>
               <td>
-                <p>
-                  <label>
-                    <input id="toggle" type="checkbox" class="filled-in" checked="{{ingredient.checked}}" />
-                  </label>
-                </p>
+                <form>
+                  <p>
+                    <label>
+                      <input type="checkbox" class="filled-in" />
+                      <span id="status">
+                        {% if ingredient.checked %}
+                          Yes
+                        {% else %}
+                          No
+                        {% endif %}
+                      </span>
+                      
+                    </label>
+                  </p>
+                </form>
               </td>
+              
             </tr>
           {% endfor %}
         <tbody>
       </table>
     </div>
-<!--
+
     <div class="row">
       <form class="col s12 m8 offset-m2 card-panel" method="POST" action="/ingredients">
-          
             {{ form.csrf_token }}
 
             <div class="input-field col s12 m8 offset-m2"> 
@@ -39,16 +54,15 @@
               {{ form.name.label }}
             </div>
             <div class="input-field col s12 m8 offset-m2"> 
-              {{ form.amount(class="validate materialize-textarea") }}
+              {{ form.amount }}
               {{ form.amount.label }}
             </div>
-
             <div class="input-field col s12 m8 offset-m2">
               {{form.submit}}
             </div> 
         </form>
     </div>
--->
+
  
 
   {% endif %} 

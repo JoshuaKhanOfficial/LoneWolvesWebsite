@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, TextAreaField, SubmitField, IntegerField
 from wtforms.validators import InputRequired, EqualTo, Email 
 import email_validator
 
@@ -19,7 +19,15 @@ class LogIn(FlaskForm):
 
 
 class AddIngredient(FlaskForm):
-  name = StringField('Name:', validatiors=[InputRequired()])
-  amount = language = SelectField('Amount', choices=[('1', '1'), ('2', '2'), ('3', '3')])
-  checked = BooleanField(default="checked")
-  add = SubmitField('Add', render_kw={'class': 'btn red waves-effect waves-orange white-text'})
+  name = StringField('Name:', validators=[InputRequired()])
+  amount = IntegerField('Amount', validators=None)
+  submit = SubmitField('Add', render_kw={'class': 'btn waves-effect waves-light white-text'})
+
+class AddRecipe(FlaskForm):
+  name = StringField('Name:', validators=None)
+  title = StringField('Title:', validators=None)
+  minutes = IntegerField('Minutes:', validators=None)
+  imageURL = StringField('URL:', validators=None)
+
+  
+  

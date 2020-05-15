@@ -58,7 +58,7 @@ def login():
     if user and user.check_password(data['password']): # check credentials
       flash('Logged in successfully.') # send message to next page
       login_user(user) # login the user
-      return redirect(url_for('myRecipes')) # redirect to main page if login successful
+      return redirect(url_for('myList')) # redirect to main page if login successful
     else:
       flash('Invalid username or password') # send message to next page
       return redirect(url_for('login')) # redirect to login page if login unsuccessful
@@ -103,8 +103,8 @@ def signup():
 def myList():
   ingredientsList = Ingredient.query.filter_by(user_id=current_user.id).all()
 
-#  if ingredientsList is None:
-#      ingredientsList = []
+  if ingredientsList is None:
+      ingredientsList = []
 
   form = AddIngredient()
 
@@ -122,5 +122,6 @@ def myList():
 @login_required
 def myRecipes():
   return render_template('recipes.html')
+
 
 app.run(host='0.0.0.0', port=8080, debug=True)
